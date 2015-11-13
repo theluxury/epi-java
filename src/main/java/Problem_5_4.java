@@ -5,6 +5,8 @@ import org.junit.rules.ExpectedException;
 import java.util.IllegalFormatCodePointException;
 
 import static org.junit.Assert.*;
+import static org.assertj.core.api.*;
+import static org.assertj.core.api.Assertions.*;
 
 /**
  * Created by theluxury o
@@ -13,7 +15,7 @@ import static org.junit.Assert.*;
 public class Problem_5_4 {
 
     public static void main(String args[]) {
-        assertTests();
+        MyTests.assertTests();
     }
 
     public static long returnClosest(long num) {
@@ -31,26 +33,29 @@ public class Problem_5_4 {
         return 0;
     }
 
-    @Test
-    public static void assertTests() {
-        // This seems inelegant but nothing else worked.
-        try {
-            returnClosest(0);
-            fail("Method didn't throw error when expected");
-        } catch (IllegalArgumentException e) {
-        }
-        try {
-            returnClosest(Constants.BIGGEST_NEGATIVE_LONG);
-            fail("Method didn't throw error when expected");
-        } catch (IllegalArgumentException e) {
-        }
+    public static class MyTests {
 
-        assertEquals(2, returnClosest(1));
-        assertEquals(1, returnClosest(2));
-        assertEquals(13, returnClosest(11));
-        assertEquals(14, returnClosest(13));
-        assertEquals(26, returnClosest(28));
-        assertEquals(25, returnClosest(26));
+        @Test
+        public static void assertTests() {
+            // This seems inelegant but nothing else worked.
+            try {
+                returnClosest(0);
+                fail("Method didn't throw error when expected");
+            } catch (IllegalArgumentException e) {
+            }
+            try {
+                returnClosest(Constants.BIGGEST_NEGATIVE_LONG);
+                fail("Method didn't throw error when expected");
+            } catch (IllegalArgumentException e) {
+            }
+
+            assertEquals(2, returnClosest(1));
+            assertEquals(1, returnClosest(2));
+            assertEquals(13, returnClosest(11));
+            assertEquals(14, returnClosest(13));
+            assertEquals(26, returnClosest(28));
+            assertEquals(25, returnClosest(26));
+        }
     }
 
 }
