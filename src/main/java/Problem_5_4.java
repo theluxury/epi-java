@@ -55,6 +55,7 @@ public class Problem_5_4 {
             assertEquals(14, returnClosest(13));
             assertEquals(26, returnClosest(28));
             assertEquals(25, returnClosest(26));
+            assertThat("aaa").contains('a');
         }
     }
 
